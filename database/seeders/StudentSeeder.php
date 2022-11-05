@@ -19,13 +19,13 @@ class StudentSeeder extends Seeder
         $faker = Factory::create();
 
         User::create([
-            'name' => $faker->fake()->name(),
-            'email' => $faker->fake()->email(),
+            'name' => $faker->name(),
+            'email' => $faker->email(),
             'password' => bcrypt('password')
         ])->student()->create([
-            'nama' => $faker->fake()->name(),
-            'password' => bcrypt('password'),
-            'jenis_kelamin' => $faker->fake()->boolean(1)
+            'nama' => $faker->name(),
+            'tgl_lahir' => $faker->dateTime(),
+            'jenis_kelamin' => $faker->boolean(1)
         ]);
     }
 }

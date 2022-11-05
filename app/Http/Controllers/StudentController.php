@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Exception;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
 {
@@ -14,7 +20,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -35,7 +41,43 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name'          => 'required',
+            'email'   => 'required',
+            'password'         => 'required',
+            'tgl_lahir' => 'required',
+            'jenis_kelamin' => 'required',
+
+
+        ];
+
+        $message = [
+            'name.required'        => 'Mohon isikan nama Siswa',
+            'email.required'        => 'Mohon isikan  email siswa',
+            'password.required'        => 'Mohon isikan password',
+            'tgl_lahir.required'        => 'Mohon isikan tanggal lahir',
+            'jenis_kelamin.required'        => 'Mohon isikan jenis kelamin',
+
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $message);
+
+
+
+        if($validator->fails()) {
+            return 'kumaha aing';
+
+        }
+
+        User::create($request->only(['name', 'email', 'password']))->student()->create([
+            'tgl_lahir' => $request->tgl_lahir,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'password' => $request->password,
+
+
+        ]);
+
+        return redirect('/student');
     }
 
     /**

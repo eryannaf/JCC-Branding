@@ -19,11 +19,11 @@ class TeacherSeeder extends Seeder
         $faker = Factory::create();
 
         User::create([
-            'name' => $faker->fake()->name(),
-            'email' => $faker->fake()->email(),
+            'name' => $faker->name(),
+            'email' => $faker->email(),
             'password' => bcrypt('password')
         ])->teacher()->create([
-            'nama' => $faker->fake()->name(),
+            'name' => $faker->name(),
         ]);
     }
 }

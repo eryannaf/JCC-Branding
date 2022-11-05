@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,5 @@ Route::get('/register', function () {
 Route::get('/dashboard', function () {
     return view('app.app');
 })->name('login');
+
+Route::resource('student', StudentController::class);

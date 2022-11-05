@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class TransactionHistories extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'due_id'
+    ];
 }

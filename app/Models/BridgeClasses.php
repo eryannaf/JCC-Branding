@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class BridgeClasses extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'class_id',
+        'user_id'
+    ];
 }
