@@ -16,6 +16,11 @@ return new class extends Migration
         Schema::create('dues', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('user_id')->constrained();
+            $table->float('amount');
+            $table->text('keterangan');
+            $table->string('kelas');
+            $table->string('judul');
         });
     }
 

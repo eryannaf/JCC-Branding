@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('bridge_classes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('class_id')->constrained();
+            $table->foreignId('user_id')->constrained();
         });
     }
 
