@@ -6,6 +6,7 @@ use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
@@ -20,7 +21,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-
+        return view('admin.student.index', ['data' => User::all()]);
     }
 
     /**
@@ -30,7 +31,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pelajaran.create');
     }
 
     /**
@@ -41,14 +42,13 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $rules = [
             'name'          => 'required',
             'email'   => 'required',
             'password'         => 'required',
             'tgl_lahir' => 'required',
             'jenis_kelamin' => 'required',
-
-
         ];
 
         $message = [
@@ -62,19 +62,14 @@ class StudentController extends Controller
 
         $validator = Validator::make($request->all(), $rules, $message);
 
-
-
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return 'kumaha aing';
-
         }
 
         User::create($request->only(['name', 'email', 'password']))->student()->create([
             'tgl_lahir' => $request->tgl_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
             'password' => $request->password,
-
-
         ]);
 
         return redirect('/student');
