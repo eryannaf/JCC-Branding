@@ -11,7 +11,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -45,11 +45,11 @@ class User extends Authenticatable
 
     public function student()
     {
-        return $this->hasOne(Student::class,'user_id','id');
+        return $this->hasOne(Student::class, 'user_id', 'id');
     }
 
     public function teacher()
     {
-        return $this->hasOne(Teacher::class,'user_id','id');
+        return $this->hasOne(Teacher::class, 'user_id', 'id');
     }
 }

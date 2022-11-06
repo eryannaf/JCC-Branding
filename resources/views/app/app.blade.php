@@ -22,7 +22,7 @@
     <!-- Sweet Alert -->
     <link href="{{ asset('assets/plugins/sweetalert/css/sweetalert.css') }}" rel="stylesheet">
 
-
+@stack('style')
 </head>
 
 <body>
@@ -107,9 +107,6 @@
         <!--**********************************
         Scripts
     ***********************************-->
-        <!--**********************************
-        Scripts
-    ***********************************-->
         <script src="{{ asset('assets/plugins/common/common.min.js') }}"></script>
         <script src="{{ asset('assets/js/custom.min.js') }}"></script>
         <script src="{{ asset('assets/js/settings.js') }}"></script>
@@ -170,6 +167,8 @@
             })(jQuery);
 
         </script>
+
+        @stack('script')
 
 </body>
 

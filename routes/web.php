@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GradesController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\NilaiAjaxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +28,6 @@ Route::get('/dashboard', function () {
 })->name('login');
 
 Route::resource('student', StudentController::class);
+Route::resource('nilai', GradesController::class);
+
+Route::resource('ajax', NilaiAjaxController::class);

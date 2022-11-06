@@ -36,7 +36,7 @@
         <ul aria-expanded="false">
             <li><a href="{{ route('student.index') }}">Pelajar</a></li>
             <li><a href="{{ route('student.index') }}">Guru</a></li>
-            <li><a href="{{ route('student.index') }}">Nilai</a></li>
+            <li><a href="{{ route('nilai.index') }}">Nilai</a></li>
         </ul>
     </li>
     <li>
