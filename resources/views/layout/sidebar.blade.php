@@ -20,11 +20,13 @@
             <i class="icon-note menu-icon"></i><span class="nav-text">Forms</span>
         </a>
         <ul aria-expanded="false">
-            <li><a href="./form-basic.html">Basic Form</a></li>
-            <li><a href="./form-validation.html">Form Validation</a></li>
-            <li><a href="./form-step.html">Step Form</a></li>
-            <li><a href="./form-editor.html">Editor</a></li>
-            <li><a href="./form-picker.html">Picker</a></li>
+            <li><a href="{{ route('student.create') }}">Pelajar</a></li>
+        </ul>
+        <ul aria-expanded="false">
+            <li><a href="#">Guru</a></li>
+        </ul>
+        <ul aria-expanded="false">
+            <li><a href="#">Nilai</a></li>
         </ul>
     </li>
     <li>
@@ -32,8 +34,9 @@
             <i class="icon-menu menu-icon"></i><span class="nav-text">Table</span>
         </a>
         <ul aria-expanded="false">
-            <li><a href="./table-basic.html" aria-expanded="false">Basic Table</a></li>
-            <li><a href="./table-datatable.html" aria-expanded="false">Data Table</a></li>
+            <li><a href="{{ route('student.index') }}">Pelajar</a></li>
+            <li><a href="{{ route('student.index') }}">Guru</a></li>
+            <li><a href="{{ route('nilai.index') }}">Nilai</a></li>
         </ul>
     </li>
     <li>

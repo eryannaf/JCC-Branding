@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grades;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class GradesController extends Controller
+class NilaiAjaxController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,8 @@ class GradesController extends Controller
      */
     public function index()
     {
-        return view('admin.nilai.index');
+        $data = Grades::all();
+        return DataTables::of($data)->make(true);
     }
 
     /**
@@ -42,10 +44,10 @@ class GradesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Grades  $grades
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Grades $grades)
+    public function show($id)
     {
         //
     }
@@ -53,10 +55,10 @@ class GradesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Grades  $grades
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Grades $grades)
+    public function edit($id)
     {
         //
     }
@@ -65,10 +67,10 @@ class GradesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Grades  $grades
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Grades $grades)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -76,10 +78,10 @@ class GradesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Grades  $grades
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Grades $grades)
+    public function destroy($id)
     {
         //
     }
