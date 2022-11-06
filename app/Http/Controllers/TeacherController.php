@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TeacherController extends Controller
 {
@@ -35,7 +37,35 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name'      => 'required',
+            'email'     => 'required',
+            'password'  => 'required',
+
+        ];
+
+        $message = [
+            'name.required'        => 'Mohon isikan nama guru',
+            'email.required'       => 'Mohon isikan  email guru',
+            'password.required'    => 'Mohon isikan password',
+
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $message);
+
+
+
+        if($validator->fails()) {
+            return 'kumaha aing';
+
+        }
+
+        User::create($request->only(['name', 'email', 'password']))->teacher()->create([
+            'nama' => $request->nama,
+
+        ]);
+
+        return redirect('/teacher');
     }
 
     /**

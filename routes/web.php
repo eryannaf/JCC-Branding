@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,6 @@ Route::get('/dashboard', function () {
 })->name('login');
 
 Route::resource('student', StudentController::class);
+Route::resource('teacher', TeacherController::class);
+Route::resource('study', StudiesController::class);
+
