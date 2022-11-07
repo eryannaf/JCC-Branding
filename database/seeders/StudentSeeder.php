@@ -23,7 +23,6 @@ class StudentSeeder extends Seeder
             'email' => $faker->email(),
             'password' => bcrypt('password')
         ])->student()->create([
-            'nama' => $faker->name(),
             'tgl_lahir' => $faker->dateTime(),
             'jenis_kelamin' => $faker->boolean(1)
         ]);

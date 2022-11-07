@@ -16,7 +16,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.guru.index');
     }
 
     /**
@@ -45,9 +45,13 @@ class TeacherController extends Controller
         ];
 
         $message = [
-            'name.required'        => 'Mohon isikan nama guru',
             'email.required'       => 'Mohon isikan  email guru',
             'password.required'    => 'Mohon isikan password',
+            'nip.required'         => 'Mohon isikan NIP',
+            'keahlian.required'    => 'Mohon isikan keahlian',
+            'alamat.required'      => 'Mohon isikan alamat',
+            'no_telp.required'     => 'Mohon isikan Nomor Telepon',
+
         ];
 
         $validator = Validator::make($request->all(), $rules, $message);
@@ -59,7 +63,10 @@ class TeacherController extends Controller
         }
 
         User::create($request->only(['name', 'email', 'password']))->teacher()->create([
-            'nama' => $request->nama,
+            'nip' => $request->nip,
+            'keahlian' => $request->keahlian,
+            'alamat' => $request->alamat,
+            'no_telp' => $request->no_telp,
         ]);
 
         return redirect('/teacher');

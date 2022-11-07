@@ -17,7 +17,11 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('user_id')->constrained();
-            $table->string('name');
+            $table->string('nip');
+            $table->string('keahlian');
+            $table->longText('alamat');
+            $table->string('no_telp');
+
 
         });
     }
