@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Grades;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Validator;
 
 class GradesController extends Controller
 {
@@ -25,7 +27,7 @@ class GradesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.nilai.create');
     }
 
     /**
@@ -36,7 +38,39 @@ class GradesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name'      => 'required',
+            'email'     => 'required',
+            'password'  => 'required',
+
+        ];
+
+        $message = [
+            'email.required'       => 'Mohon isikan  email guru',
+            'password.required'    => 'Mohon isikan password',
+            'nip.required'         => 'Mohon isikan NIP',
+            'keahlian.required'    => 'Mohon isikan keahlian',
+            'alamat.required'      => 'Mohon isikan alamat',
+            'no_telp.required'     => 'Mohon isikan Nomor Telepon',
+
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $message);
+
+
+
+        if ($validator->fails()) {
+            return 'kumaha aing';
+        }
+
+        User::create($request->only(['name', 'email', 'password']))->teacher()->create([
+            'nip' => $request->nip,
+            'keahlian' => $request->keahlian,
+            'alamat' => $request->alamat,
+            'no_telp' => $request->no_telp,
+        ]);
+
+        return redirect('/teacher');
     }
 
     /**
