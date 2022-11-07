@@ -23,10 +23,10 @@
             <li><a href="{{ route('student.create') }}">Pelajar</a></li>
         </ul>
         <ul aria-expanded="false">
-            <li><a href="#">Guru</a></li>
+            <li><a href="{{ route('teacher.create') }}">Guru</a></li>
         </ul>
         <ul aria-expanded="false">
-            <li><a href="#">Nilai</a></li>
+            <li><a href="{{ route('nilai.create') }}">Nilai</a></li>
         </ul>
     </li>
     <li>

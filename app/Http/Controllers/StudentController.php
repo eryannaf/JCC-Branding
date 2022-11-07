@@ -45,7 +45,7 @@ class StudentController extends Controller
         dd($request->all());
         $rules = [
             'name'          => 'required',
-            'email'   => 'required',
+            'email'         => 'required',
             'password'         => 'required',
             'tgl_lahir' => 'required',
             'jenis_kelamin' => 'required',

@@ -41,12 +41,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label>Jenis Kelamin</label>
-                                    <select id="inputState" class="form-control" name="keahlian" required>
-                                        <option selected="selected" disabled>Pilih Jenis Kelamin</option>
-                                        <option value="0">Permpuan</option>
-                                        <option value="1">Pria</option>
-                                    </select>
+                                    <label>Nomer Telpone</label>
+                                    <input type="text" class="form-control" name="no_phone">
                                 </div>
                             </div>
                             <button type="submite" class="btn mb-1 btn-rounded btn-primary">Add</button>

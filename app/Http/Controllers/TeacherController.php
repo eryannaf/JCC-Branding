@@ -48,21 +48,18 @@ class TeacherController extends Controller
             'name.required'        => 'Mohon isikan nama guru',
             'email.required'       => 'Mohon isikan  email guru',
             'password.required'    => 'Mohon isikan password',
-
         ];
 
         $validator = Validator::make($request->all(), $rules, $message);
 
 
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return 'kumaha aing';
-
         }
 
         User::create($request->only(['name', 'email', 'password']))->teacher()->create([
             'nama' => $request->nama,
-
         ]);
 
         return redirect('/teacher');
