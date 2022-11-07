@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Classes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ClassesController extends Controller
 {
@@ -14,7 +15,8 @@ class ClassesController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('classes')->get();
+        return view('admin.kelas.index', compact('data'));
     }
 
     /**
@@ -24,7 +26,7 @@ class ClassesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.kelas.create');
     }
 
     /**

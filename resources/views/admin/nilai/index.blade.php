@@ -16,7 +16,8 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Email</th>
+                                    <th>Nama Pelajaran</th>
+                                    <th>Nilai</th>
                                 </tr>
                             </thead>
                         </table>
@@ -37,10 +38,13 @@
                 ajax: "{{ url('ajax') }}",
                 columns: [{
                     data: 'name',
-                    name: 'Nama'
+                    name: 'Nama '
                 }, {
                     data: 'email',
-                    name: 'Email'
+                    name: 'Mata Pelajaran'
+                }, {
+                    data: 'email',
+                    name: 'Mata Pelajaran'
                 }]
             }
         );

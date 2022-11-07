@@ -20,11 +20,11 @@ class TeacherController extends Controller
         // $data = User::with('teacher')->on()->get();
 
         $data = DB::table('users')
-        ->join('teachers', 'users.id', '=', 'teachers.user_id')
-        ->select('users.*', 'teachers.*')
-        ->get();
+            ->join('teachers', 'users.id', '=', 'teachers.user_id')
+            ->select('users.*', 'teachers.*')
+            ->get();
 
-        return view('admin.guru.index',compact('data'));
+        return view('admin.guru.index', compact('data'));
     }
 
     /**

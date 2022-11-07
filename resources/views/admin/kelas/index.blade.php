@@ -14,12 +14,9 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Email</th>
-                                <th>Nama</th>
-                                <th>NIP</th>
-                                <th>keahlian</th>
-                                <th>alamat</th>
-                                <th>No Telpon</th>
+                                <th>Ruangan</th>
+                                <th>Pelajaran</th>
+                                <th>Guru / Pengajar</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,9 +26,7 @@
                                 <th>{{ $item->name }}</th>
                                 <th>{{ $item->email }}</th>
                                 <th>{{ $item->nip }}</th>
-                                <th>{{ $item->keahlian }}</th>
                                 <th>{{ $item->alamat }}</th>
-                                <th>{{ $item->no_telp }}</th>
                             </tr>
                             @empty
                             <tr>

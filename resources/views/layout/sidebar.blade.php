@@ -28,6 +28,9 @@
         <ul aria-expanded="false">
             <li><a href="{{ route('nilai.create') }}">Nilai</a></li>
         </ul>
+        <ul aria-expanded="false">
+            <li><a href="{{ route('kelas.create') }}">Kelas</a></li>
+        </ul>
     </li>
     <li>
         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -35,8 +38,9 @@
         </a>
         <ul aria-expanded="false">
             <li><a href="{{ route('student.index') }}">Pelajar</a></li>
-            <li><a href="{{ route('student.index') }}">Guru</a></li>
+            <li><a href="{{ route('teacher.index') }}">Guru</a></li>
             <li><a href="{{ route('nilai.index') }}">Nilai</a></li>
+            <li><a href="{{ route('kelas.index') }}">Kelas</a></li>
         </ul>
     </li>
     <li>
