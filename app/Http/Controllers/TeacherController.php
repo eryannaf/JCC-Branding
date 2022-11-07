@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class TeacherController extends Controller
@@ -16,7 +17,14 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return view('admin.guru.index');
+        // $data = User::with('teacher')->on()->get();
+
+        $data = DB::table('users')
+        ->join('teachers', 'users.id', '=', 'teachers.user_id')
+        ->select('users.*', 'teachers.*')
+        ->get();
+
+        return view('admin.guru.index',compact('data'));
     }
 
     /**
@@ -26,7 +34,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.guru.create');
     }
 
     /**

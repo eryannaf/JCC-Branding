@@ -30,8 +30,6 @@
                                 <th>{{ $item->email }}</th>
                                 <th>{{ $item->nip }}</th>
                                 <th>{{ $item->alamat }}</th>
-                                <th>{{ $item->jenis_kelamin }}</th>
-                                <th>{{ $item->pelajaran }}</th>
                             </tr>
                             @empty
                             <tr>

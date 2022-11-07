@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Form Pengajar</h4>
                     <div class="basic-form">
-                        <form method="POST" action="{{ route('student.store') }}">
+                        <form method="POST" action="{{ route('teacher.store') }}">
                             @csrf
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Nomer Telpone</label>
-                                    <input type="text" class="form-control" name="no_phone">
+                                    <input type="text" class="form-control" name="no_telp">
                                 </div>
                             </div>
                             <button type="submite" class="btn mb-1 btn-rounded btn-primary">Add</button>

@@ -21,7 +21,11 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('admin.student.index', ['data' => User::all()]);
+        $data = DB::table('users')
+        ->join('students', 'users.id', '=', 'students.user_id')
+        ->select('users.*', 'students.*')
+        ->get();
+        return view('admin.student.index', compact('data'));
     }
 
     /**
@@ -31,7 +35,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('admin.pelajaran.create');
+        return view('admin.student.create');
     }
 
     /**
@@ -42,7 +46,6 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
         $rules = [
             'name'          => 'required',
             'email'         => 'required',
