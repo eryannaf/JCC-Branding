@@ -23,7 +23,10 @@ class TeacherSeeder extends Seeder
             'email' => $faker->email(),
             'password' => bcrypt('password')
         ])->teacher()->create([
-            'name' => $faker->name(),
+            'nip' => $faker->lexify(),
+            'keahlian' => $faker->word(),
+            'alamat' => $faker->address(),
+            'no_telp' => $faker->phoneNumber(),
         ]);
     }
 }
