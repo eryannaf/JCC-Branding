@@ -15,7 +15,12 @@ class ClassesController extends Controller
      */
     public function index()
     {
-        $data = DB::table('classes')->get();
+        $data = DB::table('classes')
+            ->join('studies', 'studies.id', '=', 'classes.study_id')
+            ->join('users', 'users.id', '=', 'classes.user_id')
+            ->select([
+                'classes.*', 'studies.mata_pelajaran as mata_pelajaran', 'users.name as user_name'])
+            ->get();
         return view('admin.kelas.index', compact('data'));
     }
 

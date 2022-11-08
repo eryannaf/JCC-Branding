@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Grades;
+use App\Models\Studies;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,7 +19,11 @@ class GradesController extends Controller
      */
     public function index()
     {
-        return view('admin.nilai.index');
+        $data = DB::table('users')
+            ->join('teachers', 'users.id', '=', 'teachers.user_id')
+            ->select('users.*', 'teachers.*')
+            ->get();
+        return view('admin.nilai.index', compact(('data')));
     }
 
     /**
@@ -46,12 +52,7 @@ class GradesController extends Controller
         ];
 
         $message = [
-            'email.required'       => 'Mohon isikan  email guru',
-            'password.required'    => 'Mohon isikan password',
-            'nip.required'         => 'Mohon isikan NIP',
-            'keahlian.required'    => 'Mohon isikan keahlian',
-            'alamat.required'      => 'Mohon isikan alamat',
-            'no_telp.required'     => 'Mohon isikan Nomor Telepon',
+            'nilai.required'  => 'Mohon isikan  nilai',
 
         ];
 
@@ -63,14 +64,19 @@ class GradesController extends Controller
             return 'kumaha aing';
         }
 
-        User::create($request->only(['name', 'email', 'password']))->teacher()->create([
-            'nip' => $request->nip,
-            'keahlian' => $request->keahlian,
-            'alamat' => $request->alamat,
-            'no_telp' => $request->no_telp,
+        $id = auth()->user()->id;
+
+        $mapel = Studies::where('user_id', $id)->first();
+
+        Grades::create([
+            'nilai' => $request->nilai,
+            'user_id' => $request->user_id,
+            'studies_id' => $mapel->id
         ]);
 
-        return redirect('/teacher');
+
+
+        return redirect('/nilai');
     }
 
     /**

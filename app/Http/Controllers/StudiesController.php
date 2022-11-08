@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Studies;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class StudiesController extends Controller
@@ -16,7 +17,12 @@ class StudiesController extends Controller
      */
     public function index()
     {
-        //
+        // $pelajaran = Studies::all();
+        $data = DB::table('users')
+            ->join('teachers', 'users.id', '=', 'teachers.user_id')
+            ->select('users.*', 'teachers.*')
+            ->get();
+        return view('admin.pelajaran.index', compact('data'));
     }
 
     /**
@@ -26,7 +32,7 @@ class StudiesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pelajaran.create');
     }
 
     /**

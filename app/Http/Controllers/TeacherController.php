@@ -88,7 +88,8 @@ class TeacherController extends Controller
      */
     public function show(Teacher $teacher)
     {
-        //
+        // $teachers = Teacher::find($id)->first();
+        // return view('admin.guru.show', compact('teachers'));
     }
 
     /**

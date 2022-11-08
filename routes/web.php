@@ -33,7 +33,7 @@ Route::get('/dashboard', function () {
 
 Route::resource('student', StudentController::class);
 Route::resource('teacher', TeacherController::class);
-Route::resource('study', StudiesController::class);
+// Route::resource('study', StudiesController::class);
 Route::resource('nilai', GradesController::class);
 Route::resource('kelas', ClassesController::class);
 
@@ -41,3 +41,9 @@ Route::resource('ajax', NilaiAjaxController::class);
 
 
 Route::get('users/export/', [UserController::class, 'export']);
+
+
+Route::prefix('user')->group(function () {
+    Route::resource('student', StudentController::class)->only('create');
+});
+
