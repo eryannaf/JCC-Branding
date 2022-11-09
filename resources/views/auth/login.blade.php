@@ -45,17 +45,16 @@
                                     <h4>Nama Sekolah</h4>
                                 </a>
 
-                                <form class="mt-5 mb-5 login-input">
+                                <form class="mt-5 mb-5 login-input" method="post" action="{{ route('auth.login') }}">
+                                    @csrf
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Email">
+                                        <input type="email" class="form-control" placeholder="Email" name="email">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password">
+                                        <input type="password" class="form-control" placeholder="Password" name="password">
                                     </div>
                                     <button class="btn login-form__btn submit w-100">Sign In</button>
                                 </form>
-                                <p class="mt-5 login-form__footer">Dont have account? <a href="{{ route('register') }}"
-                                        class="text-primary">Sign Up</a> now</p>
                             </div>
                         </div>
                     </div>

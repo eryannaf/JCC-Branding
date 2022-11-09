@@ -16,22 +16,13 @@
                         <div class="dropdown-content-body">
                             <ul>
                                 <li>
-                                    <a href="app-profile.html"><i class="icon-user"></i>
-                                        <span>Profile</span></a>
-                                </li>
-                                <li>
-                                    <a href="email-inbox.html"><i class="icon-envelope-open"></i>
-                                        <span>Inbox</span>
-                                        <div class="badge gradient-3 badge-pill badge-primary">3</div>
+                                    <form action="{{ route('auth.logout') }}" method="post">
+                                        @csrf
+                                        <button class="btn btn-danger">
+                                            <i class="icon-key"></i> <span>Logout</span>
+                                        </button>
                                     </a>
-                                </li>
-
-                                <hr class="my-2">
-                                <li>
-                                    <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock
-                                            Screen</span></a>
-                                </li>
-                                <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                </form>
                                 </li>
                             </ul>
                         </div>

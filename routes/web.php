@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GradesController;
@@ -20,17 +21,20 @@ use App\Http\Controllers\NilaiAjaxController;
 |
 */
 
-Route::get('/login', function () {
+Route::group(['middleware' => ['auth', 'auth.session']], function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::get('/dashboard', function () {
+        return view('app.app');
+    })->name('dashboard');
+});
+
+Route::get('/', function () {
     return view('auth.login');
 })->name('login');
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
 
-Route::get('/dashboard', function () {
-    return view('app.app');
-})->name('login');
 
+
+Route::post('/', [AuthController::class, 'login'])->name('auth.login');
 Route::resource('student', StudentController::class);
 Route::resource('teacher', TeacherController::class);
 // Route::resource('study', StudiesController::class);
@@ -46,4 +50,3 @@ Route::get('users/export/', [UserController::class, 'export']);
 Route::prefix('user')->group(function () {
     Route::resource('student', StudentController::class)->only('create');
 });
-
