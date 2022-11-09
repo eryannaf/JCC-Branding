@@ -21,32 +21,36 @@ use App\Http\Controllers\NilaiAjaxController;
 |
 */
 
-Route::group(['middleware' => ['auth', 'auth.session']], function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-    Route::get('/dashboard', function () {
-        return view('app.app');
-    })->name('dashboard');
+    Route::group(['middleware' => ['role:siswa']], function () {
+        Route::get('/dashboard', function () {
+            return view('app.app');
+        })->name('dashboard');
+    });
+    Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin'], function () {
+
+        Route::resource('student', StudentController::class);
+        Route::resource('teacher', TeacherController::class);
+        Route::resource('nilai', GradesController::class);
+        Route::resource('kelas', ClassesController::class);
+
+        Route::resource('ajax', NilaiAjaxController::class);
+
+
+        Route::get('users/export/', [UserController::class, 'export']);
+        Route::post('/', [UserController::class, 'import'])->name('siswa.import');
+
+
+        Route::prefix('user')->group(function () {
+            Route::resource('student', StudentController::class)->only('create');
+        });
+    });
+    Route::group(['middleware' => ['role:guru'], 'prefix' => 'guru'], function () {
+    });
 });
 
 Route::get('/', function () {
     return view('auth.login');
 })->name('login');
-
-
-
 Route::post('/', [AuthController::class, 'login'])->name('auth.login');
-Route::resource('student', StudentController::class);
-Route::resource('teacher', TeacherController::class);
-// Route::resource('study', StudiesController::class);
-Route::resource('nilai', GradesController::class);
-Route::resource('kelas', ClassesController::class);
-
-Route::resource('ajax', NilaiAjaxController::class);
-
-
-Route::get('users/export/', [UserController::class, 'export']);
-
-
-Route::prefix('user')->group(function () {
-    Route::resource('student', StudentController::class)->only('create');
-});

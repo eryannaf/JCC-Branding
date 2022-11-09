@@ -7,7 +7,14 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                    <h4>Table Hover</h4>
+                    <h4>Table Siswa</h4>
+                    <div>
+                        <form action="{{ route('siswa.import') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <input type="file" name="file">
+                            <button class="btn mb-1 btn-rounded btn-success">Success</button>
+                        </form>
+                    </div>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover">
