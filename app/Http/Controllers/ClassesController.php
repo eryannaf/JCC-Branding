@@ -42,7 +42,9 @@ class ClassesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Classes::create($request->only(['name', 'user_id']));
+
+        return redirect('/kelas');
     }
 
     /**

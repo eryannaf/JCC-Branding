@@ -24,6 +24,7 @@ use App\Http\Controllers\NilaiAjaxController;
 Route::group(['middleware' => ['auth']], function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
     Route::group(['middleware' => ['role:siswa']], function () {
+        // Route::resource('nilai', GradesController::class)->only('index');
         Route::get('/dashboard', function () {
             return view('app.app');
         })->name('dashboard');

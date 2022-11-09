@@ -20,9 +20,9 @@ class StudentSeeder extends Seeder
 
         User::create([
             'name' => $faker->name(),
-            'email' => $faker->email(),
+            'email' => 'siswa@mail.com',
             'password' => bcrypt('password')
-        ])->student()->create([
+        ])->assignRole('siswa')->student()->create([
             'tgl_lahir' => $faker->dateTime(),
             'jenis_kelamin' => $faker->boolean(1)
         ]);

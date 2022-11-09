@@ -20,9 +20,15 @@ class TeacherSeeder extends Seeder
 
         User::create([
             'name' => $faker->name(),
-            'email' => $faker->email(),
+            'email' => 'admin@mail.com',
             'password' => bcrypt('password')
-        ])->teacher()->create([
+        ])->assignRole('admin');
+        
+        User::create([
+            'name' => $faker->name(),
+            'email' => 'guru@mail.com',
+            'password' => bcrypt('password')
+        ])->assignRole('pengajar')->teacher()->create([
             'nip' => $faker->lexify(),
             'keahlian' => $faker->word(),
             'alamat' => $faker->address(),
