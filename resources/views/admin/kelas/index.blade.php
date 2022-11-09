@@ -16,17 +16,15 @@
                                 <th>#</th>
                                 <th>Ruangan</th>
                                 <th>Pelajaran</th>
-                                <th>Guru / Pengajar</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($data as $item)
                             <tr>
                                 <th>{{ $loop->iteration }}</th>
+                                <th>{{ $item->kelas }}</th>
                                 <th>{{ $item->name }}</th>
-                                <th>{{ $item->email }}</th>
-                                <th>{{ $item->nip }}</th>
-                                <th>{{ $item->alamat }}</th>
+
                             </tr>
                             @empty
                             <tr>

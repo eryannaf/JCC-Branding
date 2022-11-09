@@ -10,6 +10,6 @@ class Classes extends Model
     use HasFactory;
     protected $fillable = [
         'kelas',
-        'study_id'
+        'user_id'
     ];
 }

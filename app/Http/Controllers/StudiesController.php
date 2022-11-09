@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use App\Models\User;
 use App\Models\Studies;
 use Illuminate\Http\Request;
@@ -107,7 +108,15 @@ class StudiesController extends Controller
      */
     public function update(Request $request, Studies $studies)
     {
-        //
+        $user = Student::where('user_id', $studies->user_id)->update([
+            'tanggal_lahir'     => $request->tanggal_lahir,
+            'jenis_kelamin'     => $request->jenis_kelamin,
+
+        ])->user()->update([
+            'name'              => $request->name,
+            'email'              => $request->email,
+            'password'          => $request->password,
+        ]);
     }
 
     /**

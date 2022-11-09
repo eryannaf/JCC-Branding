@@ -16,10 +16,9 @@ class ClassesController extends Controller
     public function index()
     {
         $data = DB::table('classes')
-            ->join('studies', 'studies.id', '=', 'classes.study_id')
             ->join('users', 'users.id', '=', 'classes.user_id')
             ->select([
-                'classes.*', 'studies.mata_pelajaran as mata_pelajaran', 'users.name as user_name'])
+                'classes.*', 'users.*'])
             ->get();
         return view('admin.kelas.index', compact('data'));
     }
@@ -31,7 +30,21 @@ class ClassesController extends Controller
      */
     public function create()
     {
-        return view('admin.kelas.create');
+        // $siswa = DB::table('users')
+        // ->join('students', 'users.id', '=', 'students.user_id')
+        // ->select('users.*',)
+        // // ->where('classes.user_id','!=','users.id')
+        // ->get();
+
+        // dd($siswa);
+
+        $siswa = DB::table('users')                 
+        ->select('id','name')
+        ->whereNotIn('id', DB::table('classes')
+        ->select('user_id'))
+        ->get();
+
+        return view('admin.kelas.create', compact('siswa'));
     }
 
     /**
@@ -42,9 +55,9 @@ class ClassesController extends Controller
      */
     public function store(Request $request)
     {
-        Classes::create($request->only(['name', 'user_id']));
+        Classes::create($request->only(['kelas', 'user_id']));
 
-        return redirect('/kelas');
+        return redirect('/admin/kelas');
     }
 
     /**

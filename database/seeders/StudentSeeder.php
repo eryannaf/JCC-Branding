@@ -16,7 +16,7 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Factory::create();
+        $faker = Factory::create('id_ID');
 
         User::create([
             'name' => $faker->name(),
@@ -26,5 +26,17 @@ class StudentSeeder extends Seeder
             'tgl_lahir' => $faker->dateTime(),
             'jenis_kelamin' => $faker->boolean(1)
         ]);
+        for ($i = 0; $i < 30; $i++) {
+            User::create([
+                'name' => $faker->name(),
+                'email' => $faker->email(),
+                'password' => bcrypt('password')
+            ])->assignRole('siswa')->student()->create([
+                'tgl_lahir' => $faker->dateTime(),
+                'jenis_kelamin' => $faker->boolean(1)
+            ]);
+        }
+
+
     }
 }

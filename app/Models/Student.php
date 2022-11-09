@@ -15,4 +15,9 @@ class Student extends Model
         'jenis_kelamin',
         'user_id'
     ];
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }
