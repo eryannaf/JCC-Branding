@@ -32,12 +32,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('student', StudentController::class)->only(['create', 'index']);
         Route::resource('teacher', TeacherController::class)->only(['create', 'index', 'store']);
         Route::resource('nilai', GradesController::class);
-        Route::post('/nilai', [GradesController::class, 'store'])->name('nilai.store');
+        // Route::post('/nilai', [GradesController::class, 'store'])->name('nilai.store');
         Route::resource('kelas', ClassesController::class)->only(['create', 'index', 'store']);
         Route::resource('ajax', NilaiAjaxController::class);
         Route::get('users/export/', [UserController::class, 'export']);
         Route::post('/', [UserController::class, 'import'])->name('siswa.import');
-        Route::post('/nilai', [GradesController::class, 'import'])->name('nilai.import');
+        Route::post('/asik', [GradesController::class, 'import'])->name('nilai.import');
         Route::prefix('user')->group(function () {
             Route::resource('student', StudentController::class)->only('create')->only(['edit']);;
         });

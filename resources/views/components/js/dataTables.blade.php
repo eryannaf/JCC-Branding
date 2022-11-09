@@ -11,13 +11,10 @@
             ajax: "{{ url('admin/ajax') }}",
             columns: [{
                 data: 'name',
-                name: 'Nama '
             }, {
-                data: 'email',
-                name: 'Mata Pelajaran'
+                data: 'keahlian',
             }, {
-                data: 'email',
-                name: 'Mata Pelajaran'
+                data: 'nilai',
             }]
         });
     });

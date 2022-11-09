@@ -2,7 +2,9 @@
 
 namespace App\Imports;
 
+use App\Models\User;
 use App\Models\Grades;
+use Termwind\Components\Dd;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
@@ -15,11 +17,14 @@ class NilaiImport implements ToModel, WithHeadingRow
      */
     public function model(array $row)
     {
+        $siswa = User::where('name', $row['nama_siswa'])->first();
+
         $guru = auth()->user()->id;
+        // dd($guru);
         return new Grades([
-            'user_id'  => $row['nama siswa'],
+            'user_id'  => $siswa->id,
             'nilai' => $row['nilai'],
-            'user_id'    => $guru,
+            'study_id'    => $guru,
         ]);
     }
 }

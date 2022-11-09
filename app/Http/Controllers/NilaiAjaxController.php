@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Grades;
 use App\Models\User;
+use App\Models\Grades;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class NilaiAjaxController extends Controller
@@ -16,7 +17,11 @@ class NilaiAjaxController extends Controller
      */
     public function index()
     {
-        $data = Grades::all();
+        $data = DB::table('users')
+            ->join('grades', 'users.id', '=', 'grades.user_id')
+            ->join('teachers', 'grades.study_id', '=', 'teachers.user_id')
+            ->select('users.*', 'grades.*', 'teachers.keahlian')
+            ->get();
         return DataTables::of($data)->make(true);
     }
 
