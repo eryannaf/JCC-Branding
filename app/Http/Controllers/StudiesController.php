@@ -62,16 +62,15 @@ class StudiesController extends Controller
 
 
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return 'kumaha aing';
-
         }
 
         User::create($request->only(['name', 'email', 'password']))->teacher()->create([
-            'tgl_lahir' => $request->tgl_lahir,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'password' => $request->password,
-
+            'nip' => $request->nip,
+            'keahlian' => $request->keahlian,
+            'alamat' => $request->alamat,
+            'no_telp' => $request->no_telp,
         ]);
 
         return redirect('/study');

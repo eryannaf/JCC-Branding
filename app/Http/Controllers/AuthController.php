@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,13 @@ class AuthController extends Controller
             return 'akun tidak terdaftar';
         }
 
-        return redirect('/dashboard');
+        if (auth()->user()->getRoleNames()[0] == 'siswa') {
+            return redirect('/dashboard');
+        } elseif (auth()->user()->getRoleNames()[0] == 'admin') {
+            return redirect('/admin/dashboard');
+        } else {
+            return redirect('/p/dashboard');
+        }
     }
     public function logout(Request $request)
     {

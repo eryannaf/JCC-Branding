@@ -48,10 +48,10 @@
                                 <form class="mt-5 mb-5 login-input" method="post" action="{{ route('auth.login') }}">
                                     @csrf
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Email" name="email">
+                                        <input type="email" class="form-control" placeholder="Email" name="email" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password" name="password">
+                                        <input type="password" class="form-control" placeholder="Password" name="password" required>
                                     </div>
                                     <button class="btn login-form__btn submit w-100">Sign In</button>
                                 </form>

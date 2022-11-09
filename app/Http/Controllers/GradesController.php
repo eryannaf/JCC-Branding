@@ -5,13 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Grades;
 use App\Models\Studies;
+use App\Imports\NilaiImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
 class GradesController extends Controller
 {
+    public function import(Request $request)
+    {
+        Excel::import(new NilaiImport, $request->file);
+        return redirect()->back();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -44,6 +51,7 @@ class GradesController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $rules = [
             'name'      => 'required',
             'email'     => 'required',
@@ -73,8 +81,6 @@ class GradesController extends Controller
             'user_id' => $request->user_id,
             'studies_id' => $mapel->id
         ]);
-
-
 
         return redirect('/nilai');
     }

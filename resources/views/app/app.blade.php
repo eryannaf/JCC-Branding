@@ -22,7 +22,7 @@
     <!-- Sweet Alert -->
     <link href="{{ asset('assets/plugins/sweetalert/css/sweetalert.css') }}" rel="stylesheet">
 
-@stack('style')
+    @stack('style')
 </head>
 
 <body>
@@ -78,97 +78,105 @@
         <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-body">
-            @yield('content')
-        </div>
-            <!--**********************************
+        <section class="content">
+
+            <div class="content-body">
+                @yield('content')
+            </div>
+        </section>
+        <!--**********************************
             Content body end
         ***********************************-->
 
 
-            <!--**********************************
+        <!--**********************************
             Footer start
         ***********************************-->
-            <div class="footer">
-                <div class="copyright">
-                    <p>Copyright &copy; Designed & Developed by <a
-                            href="https://themeforest.net/user/quixlab">Quixlab</a>
-                        2018</p>
-                </div>
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a>
+                    2018</p>
             </div>
-            <!--**********************************
-            Footer end
-        ***********************************-->
         </div>
         <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
         Main wrapper end
     ***********************************-->
 
-        <!--**********************************
+    <!--**********************************
         Scripts
     ***********************************-->
-        <script src="{{ asset('assets/plugins/common/common.min.js') }}"></script>
-        <script src="{{ asset('assets/js/custom.min.js') }}"></script>
-        <script src="{{ asset('assets/js/settings.js') }}"></script>
-        <script src="{{ asset('assets/js/gleek.js') }}"></script>
-        <script src="{{ asset('assets/js/styleSwitcher.js') }}"></script>
+    <script src="{{ asset('assets/plugins/common/common.min.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.min.js') }}"></script>
+    <script src="{{ asset('assets/js/settings.js') }}"></script>
+    <script src="{{ asset('assets/js/gleek.js') }}"></script>
+    <script src="{{ asset('assets/js/styleSwitcher.js') }}"></script>
 
-        <!-- Chartjs -->
-        <script src="{{ asset('assets/plugins/chart.js/Chart.bundle.min.js') }}"></script>
-        <!-- Circle progress -->
-        <script src="{{ asset('assets/plugins/circle-progress/circle-progress.min.js') }}"></script>
-        <!-- Datamap -->
-        {{-- <script src="{{ asset('assets/plugins/d3v3/index.js') }}"></script>
-        <script src="{{ asset('assets/plugins/topojson/topojson.min.js') }}"></script>
-        <script src="{{ asset('assets/plugins/datamaps/datamaps.world.min.js') }}"></script> --}}
-        <!-- Morrisjs -->
-        <script src="{{ asset('assets/plugins/raphael/raphael.min.js') }}"></script>
-        <script src="{{ asset('assets/plugins/morris/morris.min.js') }}"></script>
-        <!-- Pignose Calender -->
-        <script src="{{ asset('assets/plugins/moment/moment.min.js') }}"></script>
-        <script src="{{ asset('assets/plugins/pg-calendar/js/pignose.calendar.min.js') }}"></script>
-        <!-- ChartistJS -->
-        {{-- <script src="{{ asset('assets/plugins/chartist/js/chartist.min.js') }}"></script>
-        <script src="{{ asset('assets/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js') }}"></script>
-        --}}
-        <!-- Toastr -->
-        <script src="{{ asset('assets/plugins/toastr/js/toastr.min.js') }}"></script>
-        <script src="{{ asset('assets/plugins/toastr/js/toastr.init.js') }}"></script>
-        <!-- FullCalender -->
-        <script src="{{ asset('assets/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
-        <script src="{{ asset('assets/plugins/sweetalert/js/sweetalert.init.js') }}"></script>
-        <script src="{{ asset('assets/plugins/jqueryui/js/jquery-ui.min.js') }}"></script>
-        <script src="{{ asset('assets/plugins/fullcalendar/js/fullcalendar.min.js') }}"></script>
-        <script src="{{ asset('assets/js/plugins-init/fullcalendar-init.js') }}"></script>
-        <!-- Clock Picker -->
-        <script src="{{ asset('assets/plugins/clockpicker/dist/jquery-clockpicker.min.js') }}"></script>
-
-
-        <script src="{{ asset('assets/js/dashboard/dashboard-1.js') }}"></script>
-
-        <script>
-            (function ($) {
-                "use strict"
-
-                new quixSettings({
-                    version: "light", //2 options "light" and "dark"
-                    layout: "vertical", //2 options, "vertical" and "horizontal"
-                    navheaderBg: "color_1", //have 10 options, "color_1" to "color_10"
-                    headerBg: "color_1", //have 10 options, "color_1" to "color_10"
-                    sidebarStyle: "full", //defines how sidebar should look like, options are: "full", "compact", "mini" and "overlay". If layout is "horizontal", sidebarStyle won't take "overlay" argument anymore, this will turn into "full" automatically!
-                    sidebarBg: "color_1", //have 10 options, "color_1" to "color_10"
-                    sidebarPosition: "fixed", //have two options, "static" and "fixed"
-                    headerPosition: "static", //have two options, "static" and "fixed"
-                    containerLayout: "wide", //"boxed" and  "wide". If layout "vertical" and containerLayout "boxed", sidebarStyle will automatically turn into "overlay".
-                    direction: "ltr" //"ltr" = Left to Right; "rtl" = Right to Left
-                });
+    <!-- Chartjs -->
+    <script src="{{ asset('assets/plugins/chart.js/Chart.bundle.min.js') }}"></script>
+    <!-- Circle progress -->
+    <script src="{{ asset('assets/plugins/circle-progress/circle-progress.min.js') }}"></script>
+    <!-- Datamap -->
+    {{-- <script src="{{ asset('assets/plugins/d3v3/index.js') }}"></script>
+    <script src="{{ asset('assets/plugins/topojson/topojson.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datamaps/datamaps.world.min.js') }}"></script> --}}
+    <!-- Morrisjs -->
+    <script src="{{ asset('assets/plugins/raphael/raphael.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/morris/morris.min.js') }}"></script>
+    <!-- Pignose Calender -->
+    <script src="{{ asset('assets/plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/pg-calendar/js/pignose.calendar.min.js') }}"></script>
+    <!-- ChartistJS -->
+    {{-- <script src="{{ asset('assets/plugins/chartist/js/chartist.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js') }}"></script>
+    --}}
+    <!-- Toastr -->
+    <script src="{{ asset('assets/plugins/toastr/js/toastr.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/toastr/js/toastr.init.js') }}"></script>
+    <!-- FullCalender -->
+    <script src="{{ asset('assets/plugins/sweetalert/js/sweetalert.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/sweetalert/js/sweetalert.init.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jqueryui/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/fullcalendar/js/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins-init/fullcalendar-init.js') }}"></script>
+    <!-- Clock Picker -->
+    <script src="{{ asset('assets/plugins/clockpicker/dist/jquery-clockpicker.min.js') }}"></script>
 
 
-            })(jQuery);
+    <script src="{{ asset('assets/js/dashboard/dashboard-1.js') }}"></script>
 
-        </script>
+    <script>
+        (function ($) {
+            "use strict"
 
-        @stack('script')
+            new quixSettings({
+                version: "light", //2 options "light" and "dark"
+                layout: "vertical", //2 options, "vertical" and "horizontal"
+                navheaderBg: "color_1", //have 10 options, "color_1" to "color_10"
+                headerBg: "color_1", //have 10 options, "color_1" to "color_10"
+                sidebarStyle: "full", //defines how sidebar should look like, options are: "full", "compact", "mini" and "overlay". If layout is "horizontal", sidebarStyle won't take "overlay" argument anymore, this will turn into "full" automatically!
+                sidebarBg: "color_1", //have 10 options, "color_1" to "color_10"
+                sidebarPosition: "fixed", //have two options, "static" and "fixed"
+                headerPosition: "static", //have two options, "static" and "fixed"
+                containerLayout: "wide", //"boxed" and  "wide". If layout "vertical" and containerLayout "boxed", sidebarStyle will automatically turn into "overlay".
+                direction: "ltr" //"ltr" = Left to Right; "rtl" = Right to Left
+            });
+
+
+        })(jQuery);
+
+    </script>
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
+    @stack('script')
 
 </body>
 

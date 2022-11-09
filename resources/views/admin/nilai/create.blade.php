@@ -5,7 +5,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Form Pengajar</h4>
+                    <h4 class="card-title">Form Nilai</h4>
                     <div class="basic-form">
                         <form method="POST" action="{{ route('nilai.store') }}">
                             @csrf
@@ -14,14 +14,11 @@
                                     <label>Siswa</label>
                                     <select id="inputState" class="form-control" name="keahlian" required>
                                         <option selected="selected" disabled>Pilih Siswa</option>
-                                        <option value="2">Coding</option>
-                                        <option value="2">Coding</option>
-                                        <option value="2">Coding</option>
-                                        {{-- @forelse ($data as $item)
+                                        @forelse ($siswa as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                         @empty
-                                        <option>Data not found</option>
-                                        @endforelse --}}
+                                        <option >Data Not Found</option>
+                                        @endforelse
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
