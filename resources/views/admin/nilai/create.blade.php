@@ -6,6 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Form Nilai</h4>
+                    
                     <div class="basic-form">
                         <form method="POST" action="{{ route('nilai.store') }}">
                             @csrf

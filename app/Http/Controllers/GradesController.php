@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Grades;
 use App\Models\Studies;
+use Termwind\Components\Dd;
+use App\Exports\NilaiExport;
 use App\Imports\NilaiImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
-use Termwind\Components\Dd;
 
 class GradesController extends Controller
 {
@@ -19,6 +20,11 @@ class GradesController extends Controller
     {
         Excel::import(new NilaiImport, $request->file);
         return redirect()->back();
+    }
+
+    public function export() 
+    {
+        return Excel::download(new NilaiExport, 'users.xlsx');
     }
     /**
      * Display a listing of the resource.
@@ -28,8 +34,10 @@ class GradesController extends Controller
     public function index()
     {
         $data = DB::table('users')
-            ->join('teachers', 'users.id', '=', 'teachers.user_id')
-            ->select('users.*', 'teachers.*')
+        ->where('users.id', auth()->user()->id)
+            ->join('grades', 'users.id', '=', 'grades.user_id')
+            ->join('teachers', 'grades.study_id', '=', 'teachers.user_id')
+            ->select('users.name', 'teachers.keahlian', 'grades.nilai',)
             ->get();
         return view('admin.nilai.index', compact(('data')));
     }
