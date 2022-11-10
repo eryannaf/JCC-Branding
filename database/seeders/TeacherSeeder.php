@@ -16,23 +16,36 @@ class TeacherSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Factory::create();
+        $faker = Factory::create('id_ID');
 
         User::create([
             'name' => $faker->name(),
             'email' => 'admin@mail.com',
             'password' => bcrypt('password')
         ])->assignRole('admin');
-        
+
         User::create([
             'name' => $faker->name(),
             'email' => 'guru@mail.com',
             'password' => bcrypt('password')
         ])->assignRole('pengajar')->teacher()->create([
-            'nip' => $faker->lexify(),
-            'keahlian' => $faker->word(),
-            'alamat' => $faker->address(),
+            'nip' => $faker->nik(),
+            'keahlian' => $faker->randomElement((['Matematika', 'IPA', 'Bahasa Inggris', 'Bahasa Indonesia', 'PKN', 'PAI', 'IPS'])),
+            'alamat' => $faker->rumah(),
             'no_telp' => $faker->phoneNumber(),
         ]);
+
+        for ($i = 0; $i < 30; $i++) {
+            User::create([
+                'name' => $faker->name(),
+                'email' => $faker->email(),
+                'password' => bcrypt('password')
+            ])->assignRole('pengajar')->teacher()->create([
+                'nip' => $faker->nik(),
+                'keahlian' => $faker->randomElement((['Matematika', 'IPA', 'Bahasa Inggris', 'Bahasa Indonesia', 'PKN', 'PAI', 'IPS'])),
+                'alamat' => $faker->rumah(),
+                'no_telp' => $faker->phoneNumber(),
+            ]);
+        }
     }
 }

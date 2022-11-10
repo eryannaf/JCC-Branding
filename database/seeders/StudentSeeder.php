@@ -26,38 +26,6 @@ class StudentSeeder extends Seeder
             'tgl_lahir' => $faker->dateTime(),
             'jenis_kelamin' => $faker->boolean(1)
         ]);
-        User::create([
-            'name' => 'a',
-            'email' => $faker->name(),
-            'password' => bcrypt('password')
-        ])->assignRole('siswa')->student()->create([
-            'tgl_lahir' => $faker->dateTime(),
-            'jenis_kelamin' => $faker->boolean(1)
-        ]);
-        User::create([
-            'name' => 'b',
-            'email' => $faker->name(),
-            'password' => bcrypt('password')
-        ])->assignRole('siswa')->student()->create([
-            'tgl_lahir' => $faker->dateTime(),
-            'jenis_kelamin' => $faker->boolean(1)
-        ]);
-        User::create([
-            'name' => 'c',
-            'email' => $faker->name(),
-            'password' => bcrypt('password')
-        ])->assignRole('siswa')->student()->create([
-            'tgl_lahir' => $faker->dateTime(),
-            'jenis_kelamin' => $faker->boolean(1)
-        ]);
-        User::create([
-            'name' => 'd',
-            'email' => $faker->name(),
-            'password' => bcrypt('password')
-        ])->assignRole('siswa')->student()->create([
-            'tgl_lahir' => $faker->dateTime(),
-            'jenis_kelamin' => $faker->boolean(1)
-        ]);
         for ($i = 0; $i < 30; $i++) {
             User::create([
                 'name' => $faker->name(),
@@ -65,7 +33,7 @@ class StudentSeeder extends Seeder
                 'password' => bcrypt('password')
             ])->assignRole('siswa')->student()->create([
                 'tgl_lahir' => $faker->dateTime(),
-                'jenis_kelamin' => $faker->boolean(1)
+                'jenis_kelamin' => $faker->numberBetween('0', '1')
             ]);
         }
     }
