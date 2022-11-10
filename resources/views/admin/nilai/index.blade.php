@@ -69,34 +69,36 @@
                     </div>
                     @endcan
                     @can('siswa')
+                    <div>
+                        <h4 class="card-title mt-3">Export</h4>
+                        <form action="{{ route('export.nilai') }}" method="get" enctype="multipart/form-data">
+                            @csrf
+                            <button class="btn mb-1 btn-rounded btn-success">Success</button>
+                        </form>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Status</th>
-                                    <th>Date</th>
-                                    <th>Price</th>
+                                    <th>Nama</th>
+                                    <th>Keahlian</th>
+                                    <th>Nilai</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @forelse ($data as $item)
                                 <tr>
-                                    <th>1</th>
-                                    <td>Kolor Tea Shirt For Man</td>
-                                    <td><span class="badge badge-primary px-2">Sale</span>
-                                    </td>
-                                    <td>January 22</td>
-                                    <td class="color-primary">$21.56</td>
+                                    <th>{{ $loop->iteration }}</th>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->keahlian }}</td>
+                                    <td class="color-primary">{{ $item->nilai }}</td>
                                 </tr>
+                                @empty
                                 <tr>
-                                    <th>2</th>
-                                    <td>Kolor Tea Shirt For Women</td>
-                                    <td><span class="badge badge-danger px-2">Tax</span>
-                                    </td>
-                                    <td>January 30</td>
-                                    <td class="color-success">$55.32</td>
+                                    <td colspan="4" class="text-center">Data Not Found</td>
                                 </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

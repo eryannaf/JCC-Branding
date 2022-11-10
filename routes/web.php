@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['role:siswa'], 'namespace' => 'siswa'], function () {
         Route::get('/nilai', [GradesController::class, 'index'])->name('index');
         Route::get('/dashboard', [PageController::class, 'homeSiswa'])->name('home.siswa');
+        Route::get('nilai/export/', [GradesController::class, 'export'])->name('export.nilai');
     });
     Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin'], function () {
         Route::get('/dashboard', [PageController::class, 'homeAdmin'])->name('home.admin');
@@ -46,6 +47,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/dashboard', [PageController::class, 'homeGuru'])->name('home.guru');
         Route::post('/asik', [GradesController::class, 'import'])->name('nilai.import');
         Route::resource('nilai', GradesController::class)->only(['create', 'index', 'store']);
+       
     });
     Route::resource('ajax', NilaiAjaxController::class);
 });
