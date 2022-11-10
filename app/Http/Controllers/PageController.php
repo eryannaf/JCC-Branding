@@ -16,6 +16,6 @@ class PageController extends Controller
     }
     public function homeGuru()
     {
-        return view('app.app');
+        return view('admin.dashboard');
     }
 }

@@ -120,9 +120,9 @@
     <!-- Circle progress -->
     <script src="{{ asset('assets/plugins/circle-progress/circle-progress.min.js') }}"></script>
     <!-- Datamap -->
-    {{-- <script src="{{ asset('assets/plugins/d3v3/index.js') }}"></script>
+    <script src="{{ asset('assets/plugins/d3v3/index.js') }}"></script>
     <script src="{{ asset('assets/plugins/topojson/topojson.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datamaps/datamaps.world.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/plugins/datamaps/datamaps.world.min.js') }}"></script>
     <!-- Morrisjs -->
     <script src="{{ asset('assets/plugins/raphael/raphael.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/morris/morris.min.js') }}"></script>

@@ -18,17 +18,9 @@
     @can('pengajar')
     <li class="nav-label">Dashboard</li>
     <li>
-        <a class="" href="javascript:void()" aria-expanded="false">
+        <a class="" href="{{ route('home.guru') }}" aria-expanded="false">
             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
         </a>
-    </li>
-    <li>
-        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-            <i class="icon-note menu-icon"></i><span class="nav-text">Forms</span>
-        </a>
-        <ul aria-expanded="false">
-            <li><a href="{{ route('nilai.create') }}">Nilai</a></li>
-        </ul>
     </li>
     <li>
         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
