@@ -30,23 +30,24 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin'], function () {
         Route::get('/dashboard', [PageController::class, 'homeAdmin'])->name('home.admin');
         Route::resource('student', StudentController::class)->only(['create', 'index']);
-        Route::resource('teacher', TeacherController::class)->only(['create', 'index', 'store']);
-        Route::resource('nilai', GradesController::class);
-        // Route::post('/nilai', [GradesController::class, 'store'])->name('nilai.store');
+        Route::resource('teacher', TeacherController::class)->only(['create', 'index']);
+        // Route::resource('nilai', GradesController::class);
+        Route::get('/nilaia', [GradesController::class, 'index'])->name('anilai.index');
+        Route::get('/nilaiaa', [GradesController::class, 'create'])->name('anilai.create');
         Route::resource('kelas', ClassesController::class)->only(['create', 'index', 'store']);
-        Route::resource('ajax', NilaiAjaxController::class);
         Route::get('users/export/', [UserController::class, 'export']);
-        Route::post('/', [UserController::class, 'import'])->name('siswa.import');
-        Route::post('/asik', [GradesController::class, 'import'])->name('nilai.import');
+        // Route::post('/', [UserController::class, 'import'])->name('siswa.import');
         Route::prefix('user')->group(function () {
             Route::resource('student', StudentController::class)->only('create')->only(['edit']);;
         });
     });
 
     Route::group(['middleware' => ['role:pengajar'], 'prefix' => 'p'], function () {
-        // Route::get('/dashboard', [PageController::class, 'homeGuru'])->name('home.guru');
-        // Route::resource('nilai', GradesController::class)->only(['create', 'index', 'store']);
+        Route::get('/dashboard', [PageController::class, 'homeGuru'])->name('home.guru');
+        Route::post('/asik', [GradesController::class, 'import'])->name('nilai.import');
+        Route::resource('nilai', GradesController::class)->only(['create', 'index', 'store']);
     });
+    Route::resource('ajax', NilaiAjaxController::class);
 });
 
 Route::get('/', function () {

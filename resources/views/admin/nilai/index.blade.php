@@ -14,11 +14,15 @@
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Tambah Nilai
                     </button>
                     <div>
-                        <form action="{{ route('nilai.import') }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <input type="file" name="file">
-                            <button class="btn mb-1 btn-rounded btn-success">Success</button>
-                        </form>
+                        @can('pengajar')
+
+                        <h4 class="card-title mt-3">Import dan Export</h4>
+                            <form action="{{ route('nilai.import') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" name="file">
+                                <button class="btn mb-1 btn-rounded btn-success">Success</button>
+                            </form>
+                        @endcan
                     </div>
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">

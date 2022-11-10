@@ -8,7 +8,7 @@
         $('#myTable').DataTable({
             processing: true,
             serverside: true,
-            ajax: "{{ url('admin/ajax') }}",
+            ajax: "{{ route('ajax.index') }}",
             columns: [{
                 data: 'name',
             }, {

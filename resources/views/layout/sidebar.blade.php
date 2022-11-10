@@ -62,7 +62,7 @@
             <li><a href="{{ route('teacher.create') }}">Guru</a></li>
         </ul>
         <ul aria-expanded="false">
-            <li><a href="{{ route('nilai.create') }}">Nilai</a></li>
+            <li><a href="{{ route('anilai.create') }}">Nilai</a></li>
         </ul>
         <ul aria-expanded="false">
             <li><a href="{{ route('kelas.create') }}">Kelas</a></li>
@@ -75,7 +75,7 @@
         <ul aria-expanded="false">
             <li><a href="{{ route('student.index') }}">Pelajar</a></li>
             <li><a href="{{ route('teacher.index') }}">Guru</a></li>
-            <li><a href="{{ route('nilai.index') }}">Nilai</a></li>
+            <li><a href="{{ route('anilai.index') }}">Nilai</a></li>
             <li><a href="{{ route('kelas.index') }}">Kelas</a></li>
         </ul>
     </li>
