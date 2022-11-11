@@ -30,7 +30,11 @@
                                 <th>{{ $item->email }}</th>
                                 <th>{{ $item->nip }}</th>
                                 <th>{{ $item->alamat }}</th>
-                                <th>{{ $item->jenis_kelamin }}</th>
+                                @if ($item->jenis_kelamin == 0)
+                                <th>Perempuan</th>
+                                @else
+                                <th>Laki-Laki</th>
+                                @endif
                                 <th>{{ $item->pelajaran }}</th>
                             </tr>
                             @empty

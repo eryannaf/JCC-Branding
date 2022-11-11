@@ -30,19 +30,19 @@ class TeacherSeeder extends Seeder
             'password' => bcrypt('password')
         ])->assignRole('pengajar')->teacher()->create([
             'nip' => $faker->nik(),
-            'keahlian' => $faker->randomElement((['Matematika', 'IPA', 'Bahasa Inggris', 'Bahasa Indonesia', 'PKN', 'PAI', 'IPS'])),
+            'keahlian' => $faker->unique()->randomElement((['Matematika', 'IPA', 'Bahasa Inggris', 'Bahasa Indonesia', 'PKN', 'PAI', 'IPS'])),
             'alamat' => $faker->rumah(),
             'no_telp' => $faker->phoneNumber(),
         ]);
 
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 0; $i < 6; $i++) {
             User::create([
                 'name' => $faker->name(),
                 'email' => $faker->email(),
                 'password' => bcrypt('password')
             ])->assignRole('pengajar')->teacher()->create([
                 'nip' => $faker->nik(),
-                'keahlian' => $faker->randomElement((['Matematika', 'IPA', 'Bahasa Inggris', 'Bahasa Indonesia', 'PKN', 'PAI', 'IPS'])),
+                'keahlian' => $faker->unique()->randomElement((['Matematika', 'IPA', 'Bahasa Inggris', 'Bahasa Indonesia', 'PKN', 'PAI', 'IPS'])),
                 'alamat' => $faker->rumah(),
                 'no_telp' => $faker->phoneNumber(),
             ]);

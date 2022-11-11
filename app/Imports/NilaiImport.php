@@ -17,7 +17,7 @@ class NilaiImport implements ToModel, WithHeadingRow
      */
     public function model(array $row)
     {
-        $siswa = User::where('name', $row['nama_siswa'])->first();
+        $siswa = User::where('name', $row['name'])->first();
 
         $guru = auth()->user()->id;
         // dd($guru);

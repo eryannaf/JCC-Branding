@@ -17,9 +17,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->date('tgl_lahir');
-            $table->boolean('jenis_kelamin');
+            $table->string('jenis_kelamin');
             $table->foreignId('user_id')->constrained();
-
         });
     }
 

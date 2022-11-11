@@ -24,7 +24,7 @@ class StudentSeeder extends Seeder
             'password' => bcrypt('password')
         ])->assignRole('siswa')->student()->create([
             'tgl_lahir' => $faker->dateTime(),
-            'jenis_kelamin' => $faker->boolean(1)
+            'jenis_kelamin' => $faker->randomElement((['Perempuan', 'Pria']))
         ]);
         for ($i = 0; $i < 30; $i++) {
             User::create([
@@ -33,7 +33,7 @@ class StudentSeeder extends Seeder
                 'password' => bcrypt('password')
             ])->assignRole('siswa')->student()->create([
                 'tgl_lahir' => $faker->dateTime(),
-                'jenis_kelamin' => $faker->numberBetween('0', '1')
+                'jenis_kelamin' => $faker->randomElement((['Perempuan', 'Pria']))
             ]);
         }
     }

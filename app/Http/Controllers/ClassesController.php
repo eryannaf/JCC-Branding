@@ -18,8 +18,10 @@ class ClassesController extends Controller
         $data = DB::table('classes')
             ->join('users', 'users.id', '=', 'classes.user_id')
             ->select([
-                'classes.*', 'users.*'])
-            ->get();
+                'classes.*', 'users.*'
+            ])
+            ->orderBy('kelas')
+            ->paginate(10);
         return view('admin.kelas.index', compact('data'));
     }
 
@@ -38,11 +40,11 @@ class ClassesController extends Controller
 
         // dd($siswa);
 
-        $siswa = DB::table('users')                 
-        ->select('id','name')
-        ->whereNotIn('id', DB::table('classes')
-        ->select('user_id'))
-        ->get();
+        $siswa = DB::table('users')
+            ->select('id', 'name')
+            ->whereNotIn('id', DB::table('classes')
+                ->select('user_id'))
+            ->get();
 
         return view('admin.kelas.create', compact('siswa'));
     }

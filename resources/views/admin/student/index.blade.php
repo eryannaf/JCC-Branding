@@ -8,12 +8,21 @@
             <div class="card-body">
                 <div class="card-title">
                     <h4>Table Siswa</h4>
-                    <div>
-                        <form action="{{ route('siswa.import') }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <input type="file" name="file">
-                            <button class="btn mb-1 btn-rounded btn-success">Success</button>
-                        </form>
+                    <h5>Import Dan Export</h5>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <form action="{{ route('siswa.import') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" name="file" required>
+                                <button class="btn mb-1 btn-rounded btn-success">import</button>
+                            </form>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <form action="{{ route('siswa.export') }}" method="get" enctype="multipart/form-data">
+                                @csrf
+                                <button class="btn mb-1 btn-rounded btn-primary">Export</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <div class="table-responsive">

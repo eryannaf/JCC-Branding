@@ -11,17 +11,25 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Data Nilai</h4>
-                    @can('pengajar')
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Tambah
+                    @hasanyrole('pengajar')
+                    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Tambah
                         Nilai
-                    </button>
-                    <div>
-                        <h4 class="card-title mt-3">Import dan Export</h4>
-                        <form action="{{ route('nilai.import') }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <input type="file" name="file">
-                            <button class="btn mb-1 btn-rounded btn-success">Success</button>
-                        </form>
+                    </button> --}}
+                    <h4 class="card-title mt-3">Import dan Export</h4>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <form action="{{ route('nilai.import') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" name="file" required>
+                                <button class="btn mb-1 btn-rounded btn-success">Import</button>
+                            </form>
+                        </div>
+                        {{-- <div class="form-group col-md-6">
+                            <form action="{{ route('nilai.export') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <button class="btn mb-1 btn-rounded btn-primary">export</button>
+                            </form>
+                        </div> --}}
                     </div>
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -67,8 +75,7 @@
                             </thead>
                         </table>
                     </div>
-                    @endcan
-                    @can('siswa')
+                    @else
                     <div>
                         <h4 class="card-title mt-3">Export</h4>
                         <form action="{{ route('export.nilai') }}" method="get" enctype="multipart/form-data">
@@ -103,7 +110,7 @@
                         </table>
                     </div>
                 </div>
-                @endcan
+                @endhasanyrole
             </div>
         </div>
     </div>

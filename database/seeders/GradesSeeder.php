@@ -19,7 +19,7 @@ class GradesSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create('id_ID');
-        for ($i = 1; $i <= count(Teacher::whereNo); $i++) {
+        for ($i = 1; $i <= count(Teacher::all()); $i++) {
             $user = Student::where('id', $i)->first();
             Grades::create([
                 'kelas' => $faker->randomElement((['IPA 1', 'IPA 2', 'IPA 3', 'IPA 4'])),

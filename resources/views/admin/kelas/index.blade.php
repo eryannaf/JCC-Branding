@@ -24,7 +24,6 @@
                                 <th>{{ $loop->iteration }}</th>
                                 <th>{{ $item->kelas }}</th>
                                 <th>{{ $item->name }}</th>
-
                             </tr>
                             @empty
                             <tr>
@@ -33,6 +32,7 @@
                             @endforelse
                         </tbody>
                     </table>
+                    {{ $data->links('vendor.pagination.bootstrap-4') }}
                 </div>
             </div>
         </div>
